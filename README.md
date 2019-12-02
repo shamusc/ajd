@@ -1,4 +1,5 @@
-## Average Jaccard Distance:  A Method for Evaluating Distortion in Dimensionality Reduction
+## Average Jaccard Distance:  
+### A Method for Evaluating Distortion in Dimensionality Reduction
 
 This code calculates the Average Jaccard Distance between representations of data.  This is a method our labs developed for evaluating the distortion introduced by dimensionality reduction. This code also contains tools for calcualting Graph Edit Distance between trees and Adjusted Rand Index between clustering results.  For a complete description of how we use these tools in our labs check out our pre-print:
 https://www.biorxiv.org/content/10.1101/689851v1
