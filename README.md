@@ -86,8 +86,8 @@ If you'd like a plot of the results, you can use matplotlib:
 # Remember to import the package!
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(16, 9))
-plt.plot(dims,results)
+plt.figure(figsize=(8, 4.5))
+plt.plot(dims,results,'bo-')
 plt.title('Practice Data \n Dimension of Embedding vs. Avg. Jaccard Distance')
 plt.xlabel('Embedding Dimension')
 plt.ylabel('Avg. Jaccard Distance')
@@ -134,7 +134,7 @@ To plot these results, we'll use matplotlib again:
 
 ```python
 plt.figure(figsize=(8, 4.5))
-plt.plot(dims,results)
+plt.plot(dims,results,'ro-')
 plt.title('Practice Data \n Dimension of Embedding vs. Graph Edit Distance btwn. Minimum Spanning Trees')
 plt.xlabel('Embedding Dimension')
 plt.ylabel('Graph Edit Distance')
