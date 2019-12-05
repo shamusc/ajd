@@ -27,6 +27,8 @@ def jaccard(A,B):
 
 
 def ndr(data,method,dim,n_neighbors=100):
+    # Given a dataset, this function performs dimensionality reduction into the
+    # dimension specified by dimwith the specified method.
     if method == 'standard_LLE':
         embedding = manifold.LocallyLinearEmbedding(n_neighbors=n_neighbors,n_components=dim,\
                 method='standard').fit_transform(data)
@@ -58,6 +60,8 @@ def ndr(data,method,dim,n_neighbors=100):
     return(embedding)
 
 def ajd(data,embedding,jnn=20):
+    # Given a dataset and its lower dimensional representation, this function
+    # finds the average jaccard distaqnce between the two.
     print("Finding High-D Neighborhood")
     high_D_neighborhood = neighbors(data,k=jnn)
     print("Finding Low-D Neighborhood...")
@@ -73,6 +77,8 @@ def ajd(data,embedding,jnn=20):
 
 def hypersphere(n_dimensions,n_samples=1000,k_space=20,section=False,offset=0,\
     offset_dimension=0,noise=False,noise_amplitude=.01):
+    # This function creates a hyperspherical dataset of arbitrary dimension
+    # by sampling from a hypersphere of radius one.
     random.seed()
     data = np.zeros((n_samples,k_space))
     i = 0
@@ -104,11 +110,14 @@ def hypersphere(n_dimensions,n_samples=1000,k_space=20,section=False,offset=0,\
     return data
 
 def mst(data):
+    # Given a dataset, this function returns a tree structure containing the
+    # minimum spanning tree for the dataset
     dist_matrix = scipy.spatial.distance_matrix(data,data)
     tree = scipy.sparse.csgraph.minimum_spanning_tree(dist_matrix)
     return tree
 
 def get_coords(tree):
+    # This is a utility function used by the function ged below
     coo = tree.tocoo()
     first = coo.row
     second = coo.col
@@ -122,6 +131,7 @@ def get_coords(tree):
     return coords
 
 def ged(tree1,tree2):
+    # Given two trees, this function finds the graph edit distance between them.
     tree1_coords= get_coords(tree1)
     tree1_inversed = [(item[1],item[0]) for item in tree1_coords]
     tree2_coords= get_coords(tree2)
