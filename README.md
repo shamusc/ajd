@@ -12,12 +12,8 @@ In order to run the software, you'll need a working version of Python 3 with the
 - scipy
 - pandas
 - numpy
-- sklearn
+- scikit-learn
 - umap-learn
-- random
-- os
-- sys
-- csv
 - matplotlib
 
 #### Generating Hyperspheres:
