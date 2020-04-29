@@ -12,9 +12,9 @@ import csv
 
 def neighbors(data, k=20):
     # for a given dataset, finds the k nearest neighbors for each point
-    nbrs = NearestNeighbors(n_neighbors=k, algorithm='ball_tree').fit(data)
+    nbrs = NearestNeighbors(n_neighbors=k+1, algorithm='ball_tree').fit(data)
     distances, indices = nbrs.kneighbors(data)
-    return indices
+    return indices[:,1:]
 
 def jaccard(A,B):
     # for two sets A and B, finds the Jaccard distance J between A and B
