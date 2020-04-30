@@ -67,12 +67,14 @@ def ajd(data,embedding,jnn=20):
     print("Finding Low-D Neighborhood...")
     low_D_neighborhood = neighbors(embedding,k=jnn)
     print("Calculating Jaccard Distances...")
-    jaccard_distances=[]
+    jaccard_distances = 0
+    n_samples = data.shape[0]
     i = 0
-    while i < data.shape[0]:
-        jaccard_distances.append(jaccard(low_D_neighborhood[i,:],high_D_neighborhood[i,:]))
+    while i < n_samples:
+        jaccard_distance = jaccard(low_D_neighborhood[i,:],high_D_neighborhood[i,:])
+        jaccard_distances = jaccard_distances + jaccard_distance
         i += 1
-    result = np.mean(jaccard_distances)
+    result = jaccard_distances/n_samples
     return result
 
 def hypersphere(n_dimensions,n_samples=1000,k_space=20,section=False,offset=0,\
